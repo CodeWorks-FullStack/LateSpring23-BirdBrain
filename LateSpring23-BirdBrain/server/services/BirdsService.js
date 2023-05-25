@@ -7,12 +7,17 @@ class BirdsService {
   async getBirds(query) {
     const birds = await dbContext.Birds.find(query)
       .populate('birdWatcher', 'name picture')
+      .populate('watcherCount')
+      // NOTE this is going default sort in ascending order
+      // NOTE IF I added a '-' in front of watcherCount then it would sort by descending order
+      .sort('watcherCount')
     return birds
   }
 
   async getBirdById(birdId) {
     const bird = await dbContext.Birds.findById(birdId)
       .populate('birdWatcher', 'name picture')
+      .populate('watcherCount')
     if (!bird) {
       throw new BadRequest('You havent seen this bird .... it doesnt exist...')
     }
@@ -21,7 +26,7 @@ class BirdsService {
 
   async createBird(birdData) {
     const newBird = await dbContext.Birds.create(birdData)
-    await newBird.populate('birdWatcher', 'name picture')
+    await newBird.populate('birdWatcher watcherCount', 'name picture')
     return newBird
   }
 }

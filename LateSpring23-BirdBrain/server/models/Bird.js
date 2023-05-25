@@ -23,3 +23,16 @@ BirdSchema.virtual('birdWatcher', {
   // what model does this virtual reference 
   ref: 'Account'
 })
+
+
+// NOTE this virtual will keep count of how many accounts have 'spotted' the 'bird'
+BirdSchema.virtual('watcherCount', {
+  // mongoDb creates this Id 
+  localField: '_id',
+  // this birdId comes from the Spotter collection
+  foreignField: 'birdId',
+  // reference the Spotter model
+  ref: 'Spotter',
+  // we are simply counting here - how many times does this birdId show up in a different collection
+  count: true
+})
