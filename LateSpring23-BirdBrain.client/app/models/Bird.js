@@ -8,6 +8,7 @@ export class Bird {
         this.size = data.size
         this.birdWatcherId = data.birdWatcherId
         this.createdAt = data.createdAt
+        this.spotterCount = data.spotterCount
         this.birdWatcher = data.birdWatcher
         this.watcherName = data.birdWatcher.name
     }
@@ -22,7 +23,7 @@ export class Bird {
           <div>
             <h1 class="ps-2">${this.name}</h1>
             <div class="d-flex justify-content-between p-2 align-items-center">
-              <p class="fs-1">👀</p>
+              <button class="fs-1 btn" onclick="app.SpottersController.becomeSpotter('${this.id}')">👀<span>${this.spotterCount}</span></button>
               <img class="watcher-img" title="${this.watcherName}"
                 src="${this.birdWatcher.picture}"
                 alt="">
@@ -52,11 +53,18 @@ export class Bird {
     <h1 class="text-center">${this.name}</h1>
     </div>
      <div class="col-12">
- <div class="d-flex justify-content-around">
+        <div class="d-flex justify-content-around">
              <h2>Size: ${this.size}</h2>
             <h2>CanFly: ${this.canFly ? '🦅' : '🐧'} </h2>
        </div>
     </div>
+
+     <div class="col-12" id="spotters">
+         <img class="watcher-img"
+            src="${this.img}"
+            alt="">
+    </div>
+
     </div>
     </div>
     </section>

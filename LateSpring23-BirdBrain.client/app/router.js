@@ -1,6 +1,7 @@
 import { AboutController } from "./controllers/AboutController.js";
 import { BirdsController } from "./controllers/BirdsController.js";
 import { HomeController } from "./controllers/HomeController.js";
+import { SpottersController } from "./controllers/SpottersController.js";
 import { ValuesController } from "./controllers/ValuesController.js";
 import { AboutView } from "./views/AboutView.js";
 import { HomeView } from "./views/HomeView.js";
@@ -14,7 +15,7 @@ export const router = [
   // NOTE whatever you want to see/show first goes here
   {
     path: '',
-    controller: BirdsController,
+    controller: [BirdsController, SpottersController],
     view: HomeView
   },
   //  `
