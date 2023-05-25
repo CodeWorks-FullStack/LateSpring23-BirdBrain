@@ -1,0 +1,13 @@
+
+  {
+    "name": "latespring23-birdbrain",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "npm run setup:server",
+      "setup:app": "npm run setup:server && npm run setup:client",
+      "setup:client": "cd LateSpring23-BirdBrain.client && npm i",
+      "setup:server": "cd LateSpring23-BirdBrain && npm i",
+      "start": "node LateSpring23-BirdBrain/index.js"
+    }
+  }
+  

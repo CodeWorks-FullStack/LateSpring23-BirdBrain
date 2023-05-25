@@ -1,0 +1,63 @@
+
+{
+  "folders": [
+    {
+      "path": "LateSpring23-BirdBrain.client",
+      "name": "client"
+    },
+    {
+      "path": "LateSpring23-BirdBrain",
+      "name": "server"
+    },
+    {
+      "name": "LateSpring23-BirdBrain",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.suggestSelection": "first",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "javascript.referencesCodeLens.enabled": true,
+    "javascript.referencesCodeLens.showOnAllFunctions": true,
+    "typescript.implementationsCodeLens.enabled": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "typescript.referencesCodeLens.showOnAllFunctions": true,
+    "js/ts.implicitProjectConfig.checkJs": true,
+    "files.exclude": {
+      "**/.nyc_*": true,
+      "**/coverage": true,
+      "**/node_modules": true
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDragAndDrop": false,
+    "eslint.alwaysShowStatus": true,
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "eslint.codeActionsOnSave.mode": "all",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#23c5bc",
+      "activityBar.background": "#23c5bc",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#b522bd",
+      "activityBarBadge.foreground": "#e7e7e7",
+      "commandCenter.border": "#e7e7e799",
+      "sash.hoverBorder": "#23c5bc",
+      "statusBar.background": "#1b9a93",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#23c5bc",
+      "statusBarItem.remoteBackground": "#1b9a93",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "titleBar.activeBackground": "#1b9a93",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#1b9a9399",
+      "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#1b9a93"
+  }
+}
