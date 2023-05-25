@@ -1,1 +1,20 @@
 /* BASIC STYLES HERE */
+
+
+.bird-card {
+    border: solid 4px;
+    border-radius: 15px;
+}
+
+.bird-img {
+    width: 100%;
+    height: 35vh;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.watcher-img {
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+}

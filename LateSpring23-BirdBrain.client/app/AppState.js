@@ -13,6 +13,12 @@ class ObservableAppState extends EventEmitter {
   values = loadState('values', [Value])
   socketData = []
 
+  /** @type {import('./models/Bird.js').Bird[]} */
+  birds = []
+
+  /** @type {import('./models/Bird.js').Bird|null} */
+  activeBird = null
+
   // Used to load initial data
   init() {
 
