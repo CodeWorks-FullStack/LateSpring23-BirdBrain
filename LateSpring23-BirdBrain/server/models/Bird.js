@@ -26,7 +26,7 @@ BirdSchema.virtual('birdWatcher', {
 
 
 // NOTE this virtual will keep count of how many accounts have 'spotted' the 'bird'
-BirdSchema.virtual('watcherCount', {
+BirdSchema.virtual('spotterCount', {
   // mongoDb creates this Id 
   localField: '_id',
   // this birdId comes from the Spotter collection
