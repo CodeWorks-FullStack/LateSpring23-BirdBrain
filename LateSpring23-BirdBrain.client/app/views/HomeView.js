@@ -1,11 +1,6 @@
 export const HomeView = /*html*/`
    <div class="container-fluid">
 
-   <section class="row justify-content-center">
-   <div class="col-2">
-   <button onclick="app.BirdsController.getBirdForm()" class="btn fs-1" data-bs-toggle="modal" data-bs-target="#modal">🦅</button>
-   </div>
-   </section>
 
         <section class="row p-3" id="birds">
           <!-- <div class="col-md-3 col-12">

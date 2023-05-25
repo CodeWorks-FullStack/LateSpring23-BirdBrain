@@ -14,15 +14,15 @@ export class Bird {
 
 
     get CardTemplate() {
-        return `<div class="col-md-3 col-12 my-2">
-        <div class="bird-card " onclick="app.BirdsController.setActive('${this.id}')" data-bs-toggle="modal" data-bs-target="#modal">
-          <img class="bird-img"
+        return `<div class="col-md-3 col-12 my-3 p-3">
+        <div class="bird-card " onclick="app.BirdsController.setActive('${this.id}')">
+          <img class="bird-img" data-bs-toggle="modal" data-bs-target="#modal"
             src="${this.img}"
             alt="">
           <div>
-            <h1>${this.name}</h1>
-            <div class="d-flex justify-content-between">
-              <p>👀</p>
+            <h1 class="ps-2">${this.name}</h1>
+            <div class="d-flex justify-content-between p-2 align-items-center">
+              <p class="fs-1">👀</p>
               <img class="watcher-img" title="${this.watcherName}"
                 src="${this.birdWatcher.picture}"
                 alt="">
@@ -46,12 +46,18 @@ export class Bird {
             src="${this.img}"
             alt="">
     </div>
-       <div class="col-md-6 col-12">
-       <h1>${this.name}</h1>
-        <div class="d-flex justify-content-around">
+    <div class="col-md-6 col-12">
+    <div class="row h-100 justify-content-between">
+    <div class="col-12">
+    <h1 class="text-center">${this.name}</h1>
+    </div>
+     <div class="col-12">
+ <div class="d-flex justify-content-around">
              <h2>Size: ${this.size}</h2>
             <h2>CanFly: ${this.canFly ? '🦅' : '🐧'} </h2>
        </div>
+    </div>
+    </div>
     </div>
     </section>
       </div>
