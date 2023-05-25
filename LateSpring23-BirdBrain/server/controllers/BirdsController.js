@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { birdsService } from "../services/BirdsService.js";
 import BaseController from "../utils/BaseController.js";
+import { spottersService } from "../services/SpottersService.js";
 
 
 export class BirdsController extends BaseController {
@@ -12,6 +13,8 @@ export class BirdsController extends BaseController {
       .get('', this.getBirds)
       // Get a single bird
       .get('/:birdId', this.getBirdById)
+      // Get spotters by birdId
+      .get('/:birdId/spotters', this.getSpottersByBirdId)
       // Put some auth right here --> need to be logged in to do this stuff below
       .use(Auth0Provider.getAuthorizedUserInfo)
       // Create a bird
@@ -45,6 +48,17 @@ export class BirdsController extends BaseController {
       const birdData = req.body
       const newBird = await birdsService.createBird(birdData)
       return res.send(newBird)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  // NOTE this function will get all the accounts('spotters') that have seen the bird in question
+  async getSpottersByBirdId(req, res, next) {
+    try {
+      const birdId = req.params.birdId
+      const spotter = await spottersService.getSpottersByBirdId(birdId)
+      return res.send(spotter)
     } catch (error) {
       next(error)
     }
