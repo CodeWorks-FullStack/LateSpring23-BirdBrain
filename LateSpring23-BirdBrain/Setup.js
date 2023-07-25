@@ -5,7 +5,7 @@ import { logger } from './server/utils/Logger'
 
 export class Paths {
   static get Public() {
-    return path.join(__dirname, 'LateSpring23-BirdBrain')
+    return path.join(__dirname, 'LateSpring23-BirdBrain.client')
   }
 
   static get Server() {
