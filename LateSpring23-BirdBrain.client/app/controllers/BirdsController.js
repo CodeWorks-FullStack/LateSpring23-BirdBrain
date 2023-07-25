@@ -1,5 +1,6 @@
 import { AppState } from "../AppState.js";
 import { Bird } from "../models/Bird.js";
+import { bucketService } from "../services/AwsBucketService.js";
 import { birdsService } from "../services/BirdsService.js";
 import { spottersService } from "../services/SpottersService.js";
 import { getFormData } from "../utils/FormHandler.js";
@@ -60,6 +61,12 @@ export class BirdsController {
             window.event.preventDefault()
             const form = event.target
             const formData = getFormData(form)
+
+            const file = form.img.files[0]
+
+            const uploadData = await bucketService.uploadFile(file)
+            formData.img = uploadData.url
+
             console.log('creating bird', formData);
             if (formData.canFly == 'on') {
                 formData.canFly = true

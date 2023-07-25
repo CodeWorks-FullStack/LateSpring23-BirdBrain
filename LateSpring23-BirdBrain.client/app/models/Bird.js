@@ -1,21 +1,21 @@
 
 export class Bird {
-    constructor(data) {
-        this.id = data.id
-        this.name = data.name
-        this.img = data.img
-        this.canFly = data.canFly
-        this.size = data.size
-        this.birdWatcherId = data.birdWatcherId
-        this.createdAt = data.createdAt
-        this.spotterCount = data.spotterCount
-        this.birdWatcher = data.birdWatcher
-        this.watcherName = data.birdWatcher.name
-    }
+  constructor(data) {
+    this.id = data.id
+    this.name = data.name
+    this.img = data.img
+    this.canFly = data.canFly
+    this.size = data.size
+    this.birdWatcherId = data.birdWatcherId
+    this.createdAt = data.createdAt
+    this.spotterCount = data.spotterCount
+    this.birdWatcher = data.birdWatcher
+    this.watcherName = data.birdWatcher.name
+  }
 
 
-    get CardTemplate() {
-        return `<div class="col-md-3 col-12 my-3 p-3">
+  get CardTemplate() {
+    return `<div class="col-md-3 col-12 my-3 p-3">
         <div class="bird-card " onclick="app.BirdsController.setActive('${this.id}')">
           <img class="bird-img" data-bs-toggle="modal" data-bs-target="#modal"
             src="${this.img}"
@@ -31,10 +31,10 @@ export class Bird {
           </div>
         </div>
       </div>`
-    }
+  }
 
-    get BirdDetails() {
-        return /*html*/`
+  get BirdDetails() {
+    return /*html*/`
           <div class="modal-content" >
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">${this.name}</h1>
@@ -73,10 +73,10 @@ export class Bird {
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Done Peeping 👀</button>
       </div>
     </div>`
-    }
+  }
 
-    static BirdForm() {
-        return /*html*/`
+  static BirdForm() {
+    return /*html*/`
         <div class="modal-content" >
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Peep a Bird</h1>
@@ -90,8 +90,8 @@ export class Bird {
               <label for="name">Bird Name</label>
             </div>
             <div class="form-floating mb-3 col-12">
-              <input required type="url" class="form-control" id="img" name="img" placeholder="Bird Image">
               <label for="img">Bird Image</label>
+              <input required type="file" class="form-control" id="img" name="img" placeholder="Bird Image">
             </div>
           <div class="col-12">
           <select name="size" class="form-select" id="size">
@@ -116,7 +116,7 @@ export class Bird {
           </div>
         </form>
             </div>`
-    }
+  }
 
 
 }
