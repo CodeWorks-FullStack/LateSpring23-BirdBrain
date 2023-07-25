@@ -14,7 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      
       - name: Build the Application 🤖 
         run: |
           # Add any commands required to install dependencies and build your application
@@ -23,8 +22,11 @@ jobs:
       - name: Setup Env
         run: |
           mkdir -p ~/.ssh
-          echo "$EC2_PEM_KEY" > ~/.ssh/id_rsa.pem
+          echo $EC2_PEM_KEY > ~/.ssh/id_rsa.pem
           chmod 600 ~/.ssh/id_rsa.pem
+      
+      - name: Add Host
+        run: |
           ssh-keyscan -H $EC2_IP_ADDRESS >> ~/.ssh/known_hosts
 
       - name: Copy your code to the EC2📔
