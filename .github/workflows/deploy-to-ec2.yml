@@ -10,20 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - shell: bash
-        env:
-          EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
-          EC2_IP_ADDRESS: ${{ secrets.EC2_IP_ADDRESS }}
-          EC2_PEM_KEY: ${{ secrets.EC2_PEM_KEY }}
 
       - name: Checkout code
         uses: actions/checkout@v2
 
+      
       - name: Build the Application 🤖 
         run: |
           # Add any commands required to install dependencies and build your application
           npm run build
 
+      - name: Setup Env 
+        env:
+          EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
+          EC2_IP_ADDRESS: ${{ secrets.EC2_IP_ADDRESS }}
+          EC2_PEM_KEY: ${{ secrets.EC2_PEM_KEY }}
         run: |
           mkdir -p ~/.ssh
           echo "$EC2_PEM_KEY" > ~/.ssh/id_rsa.pem
