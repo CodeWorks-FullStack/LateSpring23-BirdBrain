@@ -33,10 +33,10 @@ jobs:
 
       - name: Copy your code to the EC2📔
         run: |
-          scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r ${GITHUB_WORKSPACE} $EC2_USERNAME@$EC2_IP_ADDRESS:/LateSpring23-BirdBrain
+          sudo scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r ${GITHUB_WORKSPACE} $EC2_USERNAME@$EC2_IP_ADDRESS:/LateSpring23-BirdBrain
 
       - name: Restart the EC2 🔃
         run: |
           # Add any commands required to restart your application on the EC2 instance
           # Example: 
-          ssh -i ~/.ssh/id_rsa.pem $EC2_USERNAME@$EC2_IP_ADDRESS "pm2 restart all"
+          sudo ssh -i ~/.ssh/id_rsa.pem $EC2_USERNAME@$EC2_IP_ADDRESS "pm2 restart all"
