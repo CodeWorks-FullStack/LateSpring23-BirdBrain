@@ -21,16 +21,16 @@ jobs:
       - name: Create your SSH Key 🔑
         run: |
           mkdir -p ~/.ssh
-          echo "$EC2_PEM_KEY" > ~/.ssh/id_rsa.pem
+          echo "{{ secrets.EC2_PEM_KEY }}" > ~/.ssh/id_rsa.pem
           chmod 600 ~/.ssh/id_rsa.pem
-          ssh-keyscan -H $EC2_IP_ADDRESS >> ~/.ssh/known_hosts
+          ssh-keyscan -H {{ secrets.EC2_IP_ADDRESS }} >> ~/.ssh/known_hosts
 
       - name: Copy your code to the EC2📔
         run: |
-          scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r ./ $EC2_USERNAME@$EC2_IP_ADDRESS:/LateSpring23-BirdBrain
+          scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r ./ {{secrets.EC2_USERNAME}}@{{ secrets.EC2_IP_ADDRESS}}:/LateSpring23-BirdBrain
 
       - name: Restart the EC2 🔃
         run: |
           # Add any commands required to restart your application on the EC2 instance
           # Example: 
-          ssh -i ~/.ssh/id_rsa.pem $EC2_USERNAME@$EC2_IP_ADDRESS "pm2 restart all"
+          ssh -i ~/.ssh/id_rsa.pem {{secrets.EC2_USERNAME}}@{{ secrets.EC2_IP_ADDRESS}} "pm2 restart all"
