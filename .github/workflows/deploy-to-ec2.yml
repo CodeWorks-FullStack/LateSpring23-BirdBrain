@@ -10,7 +10,6 @@ env:
   EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
   EC2_PEM_KEY: ${{ secrets.EC2_PEM_KEY }}
 
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,12 +19,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build the Application 🤖 
-        run: |
-          # Add any commands required to install dependencies and build your application
-          npm run build
-
-      - name: Setup Env
+      - name: Create a file for your 🔑 on the action-machine
         run: |
           mkdir -p ~/.ssh
           echo "$EC2_PEM_KEY" > ~/.ssh/id_rsa.pem
@@ -39,4 +33,5 @@ jobs:
         run: |
           # Add any commands required to restart your application on the EC2 instance
           # Example: 
-          sudo ssh -i ~/.ssh/id_rsa.pem $EC2_USERNAME@$EC2_IP_ADDRESS "pm2 restart all"
+          sudo ssh -i ~/.ssh/id_rsa.pem $EC2_USERNAME@$EC2_IP_ADDRESS "cd LateSpring23-BirdBrain && npm run build && pm2 restart all"
+          
