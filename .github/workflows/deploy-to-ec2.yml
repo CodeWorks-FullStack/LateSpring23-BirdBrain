@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - shell: bash
+        env:
+          EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
+          EC2_IP_ADDRESS: ${{ secrets.EC2_IP_ADDRESS }}
+          EC2_PEM_KEY: ${{ secrets.EC2_PEM_KEY }}
+
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -18,21 +24,18 @@ jobs:
           # Add any commands required to install dependencies and build your application
           npm run build
 
-      - name: Create your SSH Key 🔑
         run: |
           mkdir -p ~/.ssh
-          echo "{{ secrets.EC2_PEM_KEY }}" > ~/.ssh/id_rsa.pem
-      
-      - name: Protect your SSH Key 🔑
-        run: |
+          echo "$EC2_PEM_KEY" > ~/.ssh/id_rsa.pem
           chmod 600 ~/.ssh/id_rsa.pem
+          ssh-keyscan -H $EC2_IP_ADDRESS >> ~/.ssh/known_hosts
 
       - name: Copy your code to the EC2📔
         run: |
-          scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r ./ {{secrets.EC2_USERNAME}}@{{ secrets.EC2_IP_ADDRESS}}:/LateSpring23-BirdBrain
+          scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r ./ $EC2_USERNAME@$EC2_IP_ADDRESS:/LateSpring23-BirdBrain
 
       - name: Restart the EC2 🔃
         run: |
           # Add any commands required to restart your application on the EC2 instance
           # Example: 
-          ssh -i ~/.ssh/id_rsa.pem {{secrets.EC2_USERNAME}}@{{ secrets.EC2_IP_ADDRESS}} "pm2 restart all"
+          ssh -i ~/.ssh/id_rsa.pem $EC2_USERNAME@$EC2_IP_ADDRESS "pm2 restart all"
