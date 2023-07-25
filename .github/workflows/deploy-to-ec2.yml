@@ -33,7 +33,7 @@ jobs:
 
       - name: Copy your code to the EC2📔
         run: |
-          scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r ./ $EC2_USERNAME@$EC2_IP_ADDRESS:/LateSpring23-BirdBrain
+          scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r * $EC2_USERNAME@$EC2_IP_ADDRESS:/LateSpring23-BirdBrain
 
       - name: Restart the EC2 🔃
         run: |
