@@ -20,11 +20,7 @@ jobs:
           # Add any commands required to install dependencies and build your application
           npm run build
 
-      - name: Setup Env 
-        env:
-          EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
-          EC2_IP_ADDRESS: ${{ secrets.EC2_IP_ADDRESS }}
-          EC2_PEM_KEY: ${{ secrets.EC2_PEM_KEY }}
+      - name: Setup Env
         run: |
           mkdir -p ~/.ssh
           echo "$EC2_PEM_KEY" > ~/.ssh/id_rsa.pem
